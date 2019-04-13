@@ -1,6 +1,10 @@
-console.log('enter');
+(function() {
+  console.log('enter');
+  var searchElement = document.getElementById('user-search');
 
-
+  searchElement.addEventListener('change', function(e) {
+    console.log('change-->', this.value);
+})();
 
 /*
 
