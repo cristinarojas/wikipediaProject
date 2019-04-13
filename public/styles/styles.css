@@ -1,0 +1,227 @@
+/* Styles for the application */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Styles for main container */
+.container {
+  width: 100%;
+  height: 100%;
+  font-family: 'Raleway', sans-serif;
+}
+
+.container .header {
+  background-color: #FFF;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 1100px;
+  margin: 0 auto;
+  height: 190px;
+  line-height: 190px;
+}
+
+.container .header .navigation {
+  width: 30%;
+}
+
+.container .header .navigation .options {
+  margin: 0;
+  list-style: none;
+}
+
+.container .header .navigation .options li {
+  display: inline-block;
+}
+
+.container .header .navigation .options li a {
+  padding: 0 5px;
+  color: #212121;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+.container .header .navigation .options li a.engineer {
+  text-decoration: underline;
+}
+
+.container .header .navigation .options li a:hover {
+  text-decoration: underline;
+}
+
+.container .header .logo {
+  width: 10%;
+}
+
+.container .header .logo .wiki-logo {
+  height: 100px;
+  vertical-align: middle;
+}
+
+.container .header .search-container {
+  width: 60%;
+}
+
+.container .header .search-container .search-icon {
+  top: 13px;
+  left: 7px;
+  font-size: 20px;
+  color: rgba(177, 177, 177, 0.78);
+}
+
+.container .header .search-container .user-search {
+  height: 45px;
+  width: 492px;
+  padding: 0 0 0 35px;
+  font-size: 18px;
+  z-index: 1;
+  color: #525252;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 -1px #e6e6e6 inset;
+  border: none;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+.container .header .user-search::placeholder {
+  color: #E6E6E6;
+}
+
+/* Styles for sidebar */
+.container .sidebar {
+  background-color: #FFF;
+  position: fixed;
+  font-size: 15px;
+  color: #555;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  width: 270px;
+  top: 50%;
+  height: 40px;
+  margin-left: -95px !important;
+  z-index: 2;
+}
+
+.container .sidebar i {
+  color: rgb(85, 85, 85);
+  font-size: 13px;
+  margin: 5px;
+}
+/*styles for modal*/
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.1);
+  transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 5%);
+  background-color: white;
+}
+
+.modal-content .search-icon {
+  color: #888;
+  position: absolute;
+  top: 15px;
+}
+
+.modal-content .search {
+  height: 45px;
+  width: 510px;
+  padding: 0 0 0 35px;
+  font-size: 18px;
+  z-index: 1;
+  color: #212121;
+  text-transform: capitalize;
+  background-color: rgba(255,255,255,0.9);
+  box-shadow: 0 -1px #e6e6e6 inset;
+  border: none;
+  outline: none;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: 2px;
+}
+
+.modal-content .search::placeholder {
+  color: #555;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.modal-content .results {
+  list-style: none;
+  display: inline-block;
+  width: 510px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.modal-content .results li {
+  border-bottom: 1px solid #959595;
+  padding: 30px;
+}
+
+.modal-content .results li a {
+  text-decoration: none;
+  color: #888;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+.modal-content .results li a:hover {
+  color: #212121;
+}
+
+.close-button {
+  float: right;
+  width: 4.5rem;
+  text-align: right;
+  cursor: pointer;
+  color: #212121;
+  background-color: #FFF;
+  font-family: 'Raleway', sans-serif;
+}
+
+.close-button:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1.0);
+  transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+/*styles for content*/
+.container .content {
+  width: 1100px;
+  margin: 0 auto;
+}
+
+/* Mediaqueries for responsive web design */
