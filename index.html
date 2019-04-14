@@ -43,14 +43,15 @@
         <section class="search-container">
           <i class="fa fa-search search-icon"></i>
 
-          <input type="text"
+          <input
+            type="text"
             class="user-search"
             id="user-search"
             name="user-search"
             value=""
             placeholder="Search..."
             autocomplete="off"
-            tabindex="5"
+            tabindex="10"
             autofocus
             autocorrect="off"
             autocapitalize="off" />
@@ -71,16 +72,17 @@
     </div>
 
     <div class="modal" id="modal">
+      <span class="close-button" id="close-button">CLOSE X</span>
+
       <div class="modal-content" id="modal-content">
-          <span class="close-button" id="close-button">CLOSE X</span>
           <i class="fa fa-search search-icon"></i>
 
           <input
             type="text"
-            onkeyup="handleSearch(this.value)"
+            onkeyup="debouncedHandleSearch(this.value)"
             class="search"
             id="search"
-            name="user-search"
+            name="search"
             value=""
             placeholder="Search here"
             autocomplete="off"
@@ -88,6 +90,9 @@
             autofocus
             autocorrect="off"
             autocapitalize="off" />
+
+          <div id="results-container">
+          </div>
       </div>
     </div>
     <script src="js/wikipedia.js"></script>

@@ -148,10 +148,17 @@ body {
 }
 
 .modal-content {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 5%);
+  width: 600px;
+  display: block;
+  margin: 0 auto;
   background-color: white;
+  margin-top: 80px;
+  position: relative;
+}
+
+.modal-content  .results-container {
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .modal-content .search-icon {
@@ -186,13 +193,29 @@ body {
   list-style: none;
   display: inline-block;
   width: 510px;
+  height: 100%;
   padding: 0px;
   margin: 0px;
 }
 
 .modal-content .results li {
-  border-bottom: 1px solid #959595;
+  border-bottom: 1px solid rgba(97, 146, 156, 0.99);
   padding: 30px;
+}
+
+.modal-content .results li:hover {
+  cursor: pointer;
+}
+
+.modal-content .results li:hover  a {
+  color: #3ba27c;
+  cursor: pointer;
+}
+
+.modal-content .results li p {
+  color: #cc9f47;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
 }
 
 .modal-content .results li a {
@@ -202,21 +225,19 @@ body {
   font-size: 15px;
 }
 
-.modal-content .results li a:hover {
-  color: #212121;
-}
-
-.close-button {
-  float: right;
+.modal .close-button {
   width: 4.5rem;
-  text-align: right;
   cursor: pointer;
   color: #212121;
   background-color: #FFF;
   font-family: 'Raleway', sans-serif;
+  position: absolute;
+  right: 400px;
+  top: 40px;
+  font-size: 12px;
 }
 
-.close-button:hover {
+.modal .close-button:hover {
   color: #888;
   cursor: pointer;
 }
