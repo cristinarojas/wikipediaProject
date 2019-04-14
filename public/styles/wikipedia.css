@@ -1,0 +1,111 @@
+/* Wikipedia overwritte styles */
+.hatnote {
+  text-align: right;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hatnote  a {
+  color: #555;
+  text-decoration: none;
+}
+
+
+.tright {
+ float: right;
+ text-align: center;
+}
+
+.mw-empty-elt {
+  margin: 30px;
+}
+
+.container a {
+  color: #555;
+  text-decoration: none;
+}
+
+.container img {
+  border-radius: 4px;
+}
+
+.container a:hover {
+  color: #3ba27c;
+  font-weight: bold;
+}
+
+.container .content  p {
+  margin: 5px;
+  line-height: 30px;
+}
+
+.container .content  ul {
+  list-style: none;
+}
+
+.container .content  ul li {
+  padding: 10px 10px 10px 0px;
+}
+
+.container .content p a {
+  color: #555;
+}
+
+.container .content p a:hover {
+  color: #3ba27c;
+  font-weight: bold;
+}
+
+.infobox {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.infobox a {
+  color: #555;
+}
+
+.thumbinner {
+  margin: 30px;
+}
+
+.toctitle {
+  color: #cc9f47;
+}
+
+h2 {
+  color: #cc9f47;
+}
+
+h2 a {
+  color: #cc9f47 !important;
+}
+
+
+h2 a:hover {
+  color: #3ba27c !important;
+}
+
+h3 {
+  color: #cc9f47;
+}
+
+h3 a:hover {
+  color: #3ba27c !important;
+}
+
+table {
+  background-color:  #FFF;
+  margin: 5px;
+}
+
+tbody tr th {
+  background-color: rgba(204, 219, 222, 0.78) !important;
+}
+
+.thumbcaption {
+  color: rgba(97, 146, 156, 0.99);
+  font-weight: bold;
+}

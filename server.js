@@ -13,6 +13,16 @@ app.get('/api/search/:term', (req, res) => {
 
   const url = 'http://en.wikipedia.org/w/api.php';
   const endpoint = `${url}?action=query&list=search&srsearch=${term}&format=json`;
+
+  axios.get(endpoint)
+    .then(response => res.json(response.data));
+});
+
+app.get('/api/page/:pageId', (req, res) => {
+  const { params: { pageId } } = req;
+
+  const url = 'https://en.wikipedia.org/w/api.php';
+  const endpoint = `${url}?action=parse&pageid=${pageId}&format=json`;
   console.log('ENDPOINT===', endpoint);
   axios.get(endpoint)
     .then(response => res.json(response.data));
