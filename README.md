@@ -1,5 +1,7 @@
 # Wikipedia App
 This project was built with HTML5, CSS3, Vanilla Javascript and Nodejs.
+- [x] Note: I took the desicion to use Nodejs I got some CORS error when I was working 
+with Wikipedia API.
 
 This App reads the Wikipedia API and display the results to the user.
 
