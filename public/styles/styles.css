@@ -124,7 +124,7 @@ body {
 
 .container .sidebar i {
   color: rgb(85, 85, 85);
-  font-size: 13px;
+  font-size: 15px;
   margin: 5px;
 }
 
@@ -270,4 +270,5 @@ body {
   color: rgba(97, 146, 156, 0.99);
   font-style: italic;
 }
+
 /* Mediaqueries for responsive web design */
