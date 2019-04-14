@@ -4,7 +4,7 @@ We are ultimately trying to get a sense of how you code and solve problems.
 Leveraging the Wikipedia API, we’d like you to use HTML, CSS and Javascript to read the API and display it in an organized way.
 The UI should contain a search field that allows the end user to enter queries and return the results.
 In addition, you should add in some sort of sorting/filtering to the front-end.
-You can add in additional touches as you see fit to enhance the user experience. 
+You can add in additional touches as you see fit to enhance the user experience.
 Please do not make use of any frameworks for this exercise (Only use vanilla js/css) AND be sure to make it responsive.
 
 API Main page:
@@ -24,6 +24,40 @@ var resultsContainer = document.getElementById('results-container');
 
 // New DOM elements
 var listsElement = document.createElement('ul');
+
+function sortList(dir) {
+  var list, i, switching, b, shouldSwitch, switchcount = 0;
+  list = document.getElementById('results');
+  switching = true;
+
+  while (switching) {
+    switching = false;
+    b = list.getElementsByTagName('LI');
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if (dir == 'asc') {
+        if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == 'desc') {
+        if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+          shouldSwitch= true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+      switchcount ++;
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        switching = true;
+      }
+    }
+  }
+}
 
 // Functions for modal
 function toggleModal() {
@@ -46,6 +80,8 @@ function windowOnClick(event) {
 function handleSearch(value) {
   if (value.length === 0) {
     listsElement.innerHTML = '';
+    modalContent.removeChild(sortAsc);
+    modalContent.removeChild(sortDesc);
   } else if (value.length >= 3) {
     const url = 'https://en.wikipedia.org/w/api.php';
 
@@ -56,10 +92,23 @@ function handleSearch(value) {
         if (data.query) {
           // If there are no results from the search we show an error
           if (data.query.search.length === 0) {
-            listsElement.innerHTML = `<li>No results with this search</li>`;
+            listsElement.innerHTML = '<li>No results for this search</li>';
           } else {
             // If there are results from the search we show the data
             const searchResults = data.query.search;
+
+            // Element for sort
+            let sortAsc = document.createElement('i');
+            sortAsc.classList.add('fa', 'fa-sort-alpha-asc', 'sortAsc');
+            sortAsc.setAttribute('id', 'sortAsc');
+            sortAsc.setAttribute('onclick', `sortList('asc')`);
+            modalContent.appendChild(sortAsc);
+
+            let sortDesc = document.createElement('i');
+            sortDesc.classList.add('fa', 'fa-sort-alpha-desc', 'sortDesc');
+            sortDesc.setAttribute('id', 'sortDesc');
+            sortDesc.setAttribute('onclick', `sortList('desc')`);
+            modalContent.appendChild(sortDesc);
 
             // Clean up the list every time a search is performed
             listsElement.innerHTML = '';

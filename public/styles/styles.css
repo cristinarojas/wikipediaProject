@@ -103,7 +103,9 @@ body {
 }
 
 .container .header .user-search::placeholder {
-  color: #E6E6E6;
+  color: #CCC;
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 /* Styles for sidebar */
@@ -167,6 +169,29 @@ body {
   top: 15px;
 }
 
+.modal-content .sortAsc {
+  position: absolute;
+  top: 15px;
+  right: 30px;
+  color: #3ba27c;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-content .sortDesc {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  color: #3ba27c;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal-content .sort:hover {
+  color: #cc9f47;
+  cursor: pointer;
+}
+
 .modal-content .search {
   height: 45px;
   width: 100%;
@@ -184,8 +209,8 @@ body {
 }
 
 .modal-content .search::placeholder {
-  color: #555;
-  font-size: 16px;
+  color: #CCC;
+  font-size: 14px;
   text-transform: uppercase;
 }
 
