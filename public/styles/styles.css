@@ -169,7 +169,7 @@ body {
 
 .modal-content .search {
   height: 45px;
-  width: 510px;
+  width: 100%;
   padding: 0 0 0 35px;
   font-size: 18px;
   z-index: 1;
@@ -192,7 +192,7 @@ body {
 .modal-content .results {
   list-style: none;
   display: inline-block;
-  width: 510px;
+  width: 100%;
   height: 100%;
   padding: 0px;
   margin: 0px;
@@ -200,7 +200,7 @@ body {
 
 .modal-content .results li {
   border-bottom: 1px solid rgba(97, 146, 156, 0.99);
-  padding: 30px;
+  padding: 10px;
 }
 
 .modal-content .results li:hover {
@@ -232,7 +232,7 @@ body {
   background-color: #FFF;
   font-family: 'Raleway', sans-serif;
   position: absolute;
-  right: 400px;
+  right: 0px;
   top: 40px;
   font-size: 12px;
 }
@@ -271,4 +271,89 @@ body {
   font-style: italic;
 }
 
-/* Mediaqueries for responsive web design */
+/* Mediaqueries for Responsive web design */
+@media only screen and (max-width: 1204px) {
+  .container .header {
+    width: 100%;
+    display: block;
+    height: 100%;
+    text-align: center;
+  }
+
+  .container .header .logo {
+    width: inherit;
+  }
+
+  .container .content {
+    width: 100%;
+    padding: 8%;
+  }
+
+  .container .header .search-container {
+    width: 100%;
+    height: 110px;
+    line-height: 110px;
+  }
+
+  .container .header .search-container .user-search {
+    width: 60%;
+  }
+
+  .container .header .navigation {
+    width: inherit;
+    height: 70px;
+    line-height: 80px;
+  }
+
+  .container .content .welcome {
+    font-size: 44px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .container .content .welcome {
+    font-size: 34px;
+  }
+
+  .container .content {
+    padding: 8%;
+  }
+
+  .modal-content {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .container .content .welcome {
+    font-size: 20px;
+  }
+
+  .container .sidebar {
+    font-size: 12px;
+  }
+
+  .container .content {
+    padding: 13%;
+  }
+
+  .modal-content {
+    width: 350px;
+  }
+
+  .modal-content .search {
+    font-size: 16px;
+  }
+
+  .modal-content .results li {
+    padding: 15px;
+  }
+
+  .modal-content .results li a {
+    font-size: 12px;
+  }
+
+  .container .header .search::placeholder {
+    font-size: 14px;
+  }
+}
