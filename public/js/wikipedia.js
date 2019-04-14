@@ -18,6 +18,7 @@ var closeButton = document.getElementById('close-button');
 var search = document.getElementById('search');
 var modalContent = document.getElementById('modal-content');
 var content = document.getElementById('content');
+var resultsContainer = document.getElementById('results-container');
 
 // New DOM elements
 var listsElement = document.createElement('ul');
@@ -29,6 +30,8 @@ function toggleModal() {
   } else {
     modal.classList.add('show-modal');
   }
+
+  search.focus();
 }
 
 function windowOnClick(event) {
@@ -39,38 +42,73 @@ function windowOnClick(event) {
 
 // Function for search
 function handleSearch(value) {
-  if (value.length > 3) {
+  if (value.length === 0) {
+    listsElement.innerHTML = '';
+  } else if (value.length >= 3) {
     const url = 'https://en.wikipedia.org/w/api.php';
 
     fetch(`http://localhost:3000/api/search/${value}`)
       .then(response => response.json())
       .then(data => {
-        const searchResults = data.query.search;
+        // If the server returns some data
+        if (data.query) {
+          // If there are no results from the search we show an error
+          if (data.query.search.length === 0) {
+            listsElement.innerHTML = `<li>No results with this search</li>`;
+          } else {
+            // If there are results from the search we show the data
+            const searchResults = data.query.search;
 
-        searchResults.forEach(result => {
-          let list = document.createElement('li');
-          let aElement = document.createElement('a');
-          let title = document.createElement('p');
+            // Clean up the list every time a search is performed
+            listsElement.innerHTML = '';
 
-          listsElement.className = 'results';
-          listsElement.id = 'results';
+            searchResults.forEach(result => {
+              let list = document.createElement('li');
+              let aElement = document.createElement('a');
+              let title = document.createElement('p');
 
-          list.setAttribute('id', result.pageid);
+              listsElement.className = 'results';
+              resultsContainer.className = 'results-container';
+              listsElement.id = 'results';
 
-          aElement.setAttribute('href', '#');
-          aElement.setAttribute('onclick', `showPage(${result.pageid})`)
-          aElement.innerHTML = result.snippet;
-          title.innerHTML = result.title;
+              list.setAttribute('id', result.pageid);
 
-          listsElement.appendChild(list);
-          list.appendChild(title);
-          list.appendChild(aElement);
+              aElement.setAttribute('href', '#');
+              list.setAttribute('onclick', `showPage(${result.pageid})`)
+              aElement.innerHTML = result.snippet;
+              title.innerHTML = result.title;
 
-          modalContent.appendChild(listsElement);
-        });
+              listsElement.appendChild(list);
+              list.appendChild(title);
+              list.appendChild(aElement);
+
+              resultsContainer.appendChild(listsElement);
+            });
+          }
+        } else if (data.error) {
+          // If the server is too busy or down we show an error
+          listsElement.innerHTML = `<li>${data.error.info}</li>`;
+        }
       });
   }
 }
+
+// Debounce function, to add a delay on each function call
+function debounce(func, time) {
+  return (args) => {
+    let previousCall = this.lastCall;
+    this.lastCall = Date.now();
+
+    if (previousCall && ((this.lastCall - previousCall) <= time)) {
+      clearTimeout(this.lastCallTimer);
+    }
+
+    this.lastCallTimer = setTimeout(() => func(args), time);
+  }
+}
+
+// Debouncing function to avoid too much API calls
+var debouncedHandleSearch = debounce(handleSearch, 250);
 
 // Function to show individual selected result
 function showPage(pageId) {
@@ -89,4 +127,4 @@ function showPage(pageId) {
 // Modal Event listeners
 trigger.addEventListener('click', toggleModal, false);
 closeButton.addEventListener('click', toggleModal, false);
-//window.addEventListener('click', windowOnClick, false);
+window.addEventListener('click', windowOnClick, false);
