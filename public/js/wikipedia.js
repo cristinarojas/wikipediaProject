@@ -24,6 +24,21 @@ var resultsContainer = document.getElementById('results-container');
 
 // New DOM elements
 var listsElement = document.createElement('ul');
+// Element for sort
+var sortAsc = document.createElement('i');
+sortAsc.classList.add('fa', 'fa-sort-alpha-asc', 'sortAsc');
+sortAsc.setAttribute('id', 'sortAsc');
+sortAsc.setAttribute('onclick', `sortList('asc')`);
+modalContent.appendChild(sortAsc);
+
+var sortDesc = document.createElement('i');
+sortDesc.classList.add('fa', 'fa-sort-alpha-desc', 'sortDesc');
+sortDesc.setAttribute('id', 'sortDesc');
+sortDesc.setAttribute('onclick', `sortList('desc')`);
+modalContent.appendChild(sortDesc);
+
+sortAsc.style.visibility= 'hidden';
+sortDesc.style.visibility= 'hidden';
 
 function sortList(dir) {
   var list, i, switching, b, shouldSwitch, switchcount = 0;
@@ -80,11 +95,9 @@ function windowOnClick(event) {
 function handleSearch(value) {
   if (value.length === 0) {
     listsElement.innerHTML = '';
-    modalContent.removeChild(sortAsc);
-    modalContent.removeChild(sortDesc);
+    sortAsc.style.visibility= 'hidden';
+    sortDesc.style.visibility= 'hidden';
   } else if (value.length >= 3) {
-    const url = 'https://en.wikipedia.org/w/api.php';
-
     fetch(`http://localhost:3000/api/search/${value}`)
       .then(response => response.json())
       .then(data => {
@@ -97,18 +110,8 @@ function handleSearch(value) {
             // If there are results from the search we show the data
             const searchResults = data.query.search;
 
-            // Element for sort
-            let sortAsc = document.createElement('i');
-            sortAsc.classList.add('fa', 'fa-sort-alpha-asc', 'sortAsc');
-            sortAsc.setAttribute('id', 'sortAsc');
-            sortAsc.setAttribute('onclick', `sortList('asc')`);
-            modalContent.appendChild(sortAsc);
-
-            let sortDesc = document.createElement('i');
-            sortDesc.classList.add('fa', 'fa-sort-alpha-desc', 'sortDesc');
-            sortDesc.setAttribute('id', 'sortDesc');
-            sortDesc.setAttribute('onclick', `sortList('desc')`);
-            modalContent.appendChild(sortDesc);
+            sortAsc.style.visibility= 'visible';
+            sortDesc.style.visibility= 'visible';
 
             // Clean up the list every time a search is performed
             listsElement.innerHTML = '';
