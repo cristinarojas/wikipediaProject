@@ -174,7 +174,7 @@ body {
   top: 15px;
   right: 30px;
   color: #3ba27c;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
 }
 
@@ -183,8 +183,16 @@ body {
   top: 15px;
   right: 0px;
   color: #3ba27c;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 600;
+}
+
+.modal-content .sortAsc:hover {
+  cursor: pointer;
+}
+
+.modal-content .sortDesc:hover {
+  cursor: pointer;
 }
 
 .modal-content .sort:hover {
