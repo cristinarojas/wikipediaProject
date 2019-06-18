@@ -7,8 +7,6 @@ Please do not make use of any frameworks for this exercise (Only use vanilla js/
 
 API Main page:
 https://www.mediawiki.org/wiki/API:Main_page
-
-You can send the result back to me via github OR by way of a code pen.
 */
 
 // DOM elements
